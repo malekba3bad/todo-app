@@ -23,9 +23,7 @@ const ToDo = () => {
             <input
               autoFocus
               onKeyDown={e => {
-                if (e.key === 'Enter') 
-                  handleAddTask();
-                
+                if (e.key === 'Enter') handleAddTask();
               }}
               value={input}
               onChange={e => {
@@ -37,7 +35,7 @@ const ToDo = () => {
             />
             <button
               onClick={() => {
-                if (input === "" || !input) return;
+                if (input === '' || !input) return;
                 handleAddTask();
               }}
               className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded-full font-semibold duration-150 cursor-pointer"
@@ -55,7 +53,10 @@ const ToDo = () => {
               className="flex justify-between items-center group w-full border border-indigo-700 hover:bg-indigo-600 hover:text-white cursor-pointer  py-5 px-10 bg-gray-100  text-black font-extrabold rounded-xl duration-150"
             >
               <p>{task}</p>
-              <MdDelete className='text-2xl text-red-500 group-hover:text-red duration-200' onClick={() => setTasks(tasks.filter(t => t !== task))} />
+              <MdDelete
+                className="text-2xl text-red-500 group-hover:text-red duration-200"
+                onClick={() => setTasks((oldTasks) => oldTasks.filter((_, index) => index !== i))}
+              />
             </div>
           ))
         ) : (
