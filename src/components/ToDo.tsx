@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { MdDelete } from 'react-icons/md';
 
 const ToDo = () => {
   const [tasks, setTasks] = useState<string[]>([]);
@@ -51,9 +52,10 @@ const ToDo = () => {
           tasks.reverse().map((task, i) => (
             <div
               key={i}
-              className="w-full border border-indigo-700 hover:bg-indigo-600 hover:text-white cursor-pointer duration-200 py-5 px-10 bg-gray-100  text-black font-extrabold rounded-xl duration-150"
+              className="flex justify-between items-center group w-full border border-indigo-700 hover:bg-indigo-600 hover:text-white cursor-pointer  py-5 px-10 bg-gray-100  text-black font-extrabold rounded-xl duration-150"
             >
-              {task}
+              <p>{task}</p>
+              <MdDelete className='text-2xl text-red-500 group-hover:text-red duration-200' onClick={() => setTasks(tasks.filter(t => t !== task))} />
             </div>
           ))
         ) : (
